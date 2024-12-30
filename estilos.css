@@ -1,0 +1,462 @@
+:root {
+  --color-primario: #545454;
+  --color-secundario: #e9bbbd;
+  --color-acento: #490955;
+  --color-texto: #ffffff;
+}
+
+body {
+  background-color: var(--color-secundario);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--color-primario);
+}
+
+#logo {
+  width: 70px;
+  height: auto;
+  filter: invert(1);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+#logo:hover {
+  filter: invert(1) drop-shadow(0 0 15px white);
+  transform: scale(1.05);
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--color-texto);
+  font-size: 18px;
+  font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.navbar a:hover {
+  background: linear-gradient(45deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+               0 0 40px rgba(255, 255, 255, 0.6),
+               0 0 60px rgba(255, 255, 255, 0.4);
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--color-texto);
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+    background-color: var(--color-primario);
+    position: fixed;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    display: none;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 9999;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  #menu-toggle:checked + .menu-icon + ul {
+    display: flex;
+    transform: translateY(0);
+  }
+
+  .menu-icon {
+    display: block;
+    z-index: 10000;
+    margin-left: 10px;
+  }
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+footer {
+  background-color: var(--color-primario);
+  color: var(--color-texto);
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  margin-top: auto;
+}
+
+#formulario-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+#formulario {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+legend {
+  font-weight: bold;
+  color: var(--color-acento);
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 100px;
+}
+
+a {
+  color: var(--color-acento);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--color-acento);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #2f0537;
+}
+
+@media (max-width: 768px) {
+  #formulario {
+    padding: 20px;
+  }
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#acerca_de_nosotros p {
+  text-align: justify;
+  line-height: 1.6;
+  margin: auto;
+}
+
+video {
+  text-align: center;
+  width: 70%;
+  height: auto;
+}
+
+/* Estilo base para las tarjetas */
+.card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+/* Imagen de la tarjeta */
+.card iframe {
+  width: 100%;
+  height: 315px;
+  transition: transform 0.3s ease;
+}
+
+/* Contenido oculto inicialmente (debajo de la imagen) */
+.card-body {
+  padding: 20px;
+  display: none;
+}
+
+/* Efecto de hover para mostrar el contenido */
+.card:hover .card-body {
+  display: block;
+}
+
+/* Efecto de expansión al pasar el ratón */
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del botón */
+.btn {
+  background-color: #e9bbbd;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #c28b95;
+}
+
+h2 {
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+  color: #555;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+:root {
+  --color-primario: #242C4F;  /* Azul oscuro */
+  --color-secundario: #95DBF6;  /* Azul claro */
+  --color-acento: #E7BA61;  /* Amarillo */
+  --color-texto: #FFFFFF;  /* Blanco */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+:root {
+  --color-primario: #545454; /* Gris */
+  --color-secundario: #e9bbbd; /* Rosa */
+  --color-acento: #490955; /* Violeta */
+  --color-texto: #ffffff; /* Blanco */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+:root {
+  --color-primario: #545454; /* Gris */
+  --color-secundario: #e9bbbd; /* Rosa */
+  --color-acento: #490955; /* Violeta */
+  --color-texto: #ffffff; /* Blanco */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.material-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.material {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--color-secundario); /* Rosa */
+  border: 1px solid var(--color-primario); /* Gris */
+  color: var(--color-primario); /* Gris */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido horizontalmente */
+  justify-content: center; /* Centra el contenido verticalmente */
+}
+
+.material h2 {
+  margin: 0 0 15px;
+  color: var(--color-acento); /* Violeta */
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-align: center; /* Centra el título */
+}
+
+.material p {
+  color: var(--color-primario); /* Gris */
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  text-align: center; /* Centra el texto */
+}
+
+.material a {
+  color: var(--color-acento); /* Violeta */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  text-align: center; /* Centra los enlaces */
+  display: inline-block; /* Hace que el enlace se comporte como un bloque */
+  margin-top: 10px; /* Espacio arriba de los enlaces */
+}
+
+.material a:hover {
+  color: var(--color-primario); /* Gris */
+  text-decoration: underline;
+}
+
+.material .btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: var(--color-acento); /* Violeta */
+  color: var(--color-texto); /* Blanco */
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.material .btn:hover {
+  background-color: #2f0537;
+}
+
+.material:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.material-img {
+  display: block;
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  margin: 0 auto 10px;
+}
+ /* Estilo para el contenedor */
+ #acerca_de_nosotros {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  margin: 0 auto; /* Centra el contenedor */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo para el párrafo */
+#acerca_de_nosotros p {
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.reservar-btn {
+  background-color: var(--color-secundario); /* Fondo rosa */
+  color: black; /* Texto negro */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+  overflow: hidden; /* Asegura que el ícono no se desborde del botón */
+}
+
+.reservar-btn:hover {
+  background-color: var(--color-primario); /* Cambio de color de fondo al pasar el ratón */
+  color: white; /* Texto blanco al pasar el ratón */
+}
+
+/* Cambiar color del ícono cuando se pasa el ratón */
+.reservar-btn:hover .carrito-icono {
+  fill: white; /* Cambia el color del ícono a blanco */
+}
+
+/* Estilos para el ícono */
+.carrito-icono {
+  width: 18px; /* Tamaño más pequeño */
+  height: 18px; /* Tamaño más pequeño */
+  margin-right: 10px; /* Espacio entre el ícono y el texto */
+  object-fit: contain; /* Asegura que el ícono se ajuste bien */
+  fill: black; /* Color inicial del ícono, negro */
+}
